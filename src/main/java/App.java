@@ -48,5 +48,12 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/squads/:squadID", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("squad", Squad.all().get(request.params(":squadID")));
+      model.put("template", "templates/squad.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
   }
 }

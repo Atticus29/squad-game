@@ -4,7 +4,7 @@
   #foreach ($i in $squads.keySet())
     #set ( $cols = 12/$squads.size() )
     <div class="col-md-$cols">
-      <h2>$squads.get($i).getName()</h2>
+      <a href="/squads/$squads.get($i).getName()">$squads.get($i).getName()</a>
       <h4>$squads.get($i).getCause()</h4>
       #foreach ($hero in $squads.get($i).getHeroes())
         <div class="hero">
