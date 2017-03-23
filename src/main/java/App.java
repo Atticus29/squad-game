@@ -33,13 +33,8 @@ public class App {
       String name = request.queryParams("name");
       String cause = request.queryParams("cause");
       String[] selectedHeroes = request.queryParamsValues("heroes");
-      // System.out.println(request.queryParamsValues("heroes").length);
       Squad newSquad = new Squad(name, cause);
       for (String hero : selectedHeroes) {
-        // System.out.println("hero is " + hero);
-        // System.out.println(Hero.all().size());
-        // System.out.println(Hero.getHero(hero) instanceof Hero);
-        // System.out.println(Hero.getHero(hero));
         newSquad.addHero(Hero.getHero(hero));
       }
       model.put("squads", Squad.all());
@@ -52,6 +47,13 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("squad", Squad.all().get(request.params(":squadID")));
       model.put("template", "templates/squad.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/squads/:squadID/heroes/:heroID", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("hero", Hero.getHero(request.params(":heroID")));
+      model.put("template", "templates/hero.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 

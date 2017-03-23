@@ -3,13 +3,9 @@
 <h2>Name: $squad.getName()</h2>
 <h2>Cause: $squad.getCause()</h2>
 <h2>Heroes: </h2>
+<ul>
   #foreach ($hero in $squad.getHeroes())
-  <ul>
-    <li>$hero.getName()</li>
-    <li>$hero.getAge()</li>
-    <li>$hero.getPower()</li>
-    <li>$hero.getAttack()</li>
-    <li>$hero.getDefense()</li>
-  </ul>
+    <li><a href="/squads/$squad.getName()/heroes/$hero.getName()">$hero.getName()</a></li>
   #end
+</ul>
 <!--squad.vtl-->

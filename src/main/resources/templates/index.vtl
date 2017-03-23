@@ -4,17 +4,24 @@
   #foreach ($i in $squads.keySet())
     #set ( $cols = 12/$squads.size() )
     <div class="col-md-$cols">
-      <a href="/squads/$squads.get($i).getName()">$squads.get($i).getName()</a>
+      <h1>
+        <a href="/squads/$squads.get($i).getName()">$squads.get($i).getName()</a></h1>
       <h4>$squads.get($i).getCause()</h4>
-      #foreach ($hero in $squads.get($i).getHeroes())
-        <div class="hero">
-          <h3>Hero Name: $hero.getName()</h3>
-          <h3>Age: $hero.getAge()</h3>
-          <h3>Ability: $hero.getPower()</h3>
-          <h3>Attack Rating: $hero.getAttack()</h3>
-          <h3>Defense Rating: $hero.getDefense()</h3>
-        </div>
-      #end
+      <ul>
+        #foreach ($hero in $squads.get($i).getHeroes())
+          <div class="hero">
+            <li>
+              <h5>Hero Name: $hero.getName()</h5>
+              <ul>
+                <!-- <h5>Age: $hero.getAge()</h5> -->
+                <li><h6>Ability: $hero.getPower()</h6></li>
+                <!-- <h5>Attack Rating: $hero.getAttack()</h5> -->
+                <!-- <h5>Defense Rating: $hero.getDefense()</h5> -->
+              </ul>
+            </li>
+          </div>
+        #end
+      </ul>
     </div>
     #end
 </div>
