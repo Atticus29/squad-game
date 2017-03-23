@@ -4,6 +4,17 @@
   <input type="text" name="name" id="name">
   <label for="cause"></label>
   <input type="text" name="cause" id="cause">
+  #foreach ($hero in $heroes)
+    <div class="hero">
+      <h2>Name: $hero.getName():</h2>
+      <h3>Age: $hero.getAge()</h3>
+      <h3>Ability: $hero.getPower()</h3>
+      <h3>Attack: $hero.getAttack()</h3>
+      <h3>Defense: $hero.getDefense()</h3>
+      <input type="checkbox" name="heroes" value="$hero.getName()">Select $hero.getName()<br>
+    </div>
+  #end
   <button type="submit" class="btn btn-primary">Add Squad</button>
 </form>
+  <a href="/squads/:sqaudID/heroes/new" class="btn btn-primary">Create a new hero</a>
 <!--squad-form.vtl-->
