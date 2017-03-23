@@ -38,6 +38,7 @@ public class Squad {
 
   public void addHero(Hero newHero){
     mHeroes.put(newHero.getName(), newHero);
+    newHero.recruit();
   }
 
   public Map<String, Hero> getHeroes(){

@@ -1,9 +1,11 @@
 <!--hero.vtl-->
-<h2>Hero: $hero.getName()</h2>
+<h2>$hero.getName()</h2>
+<h3>Details</h3>
 <ul>
-  <li>$hero.getAge()</li>
-  <li>$hero.getPower()</li>
-  <li>$hero.getAttack()</li>
-  <li>$hero.getDefense()</li>
+  <li>Age: $hero.getAge()</li>
+  <li>Ability: $hero.getPower()</li>
+  <li>Attack level: $hero.getAttack()</li>
+  <li>Defense level: $hero.getDefense()</li>
 </ul>
+<a href="/squads/$squadID" class="btn btn-primary">Back to $squadID</a>
 <!--hero.vtl-->

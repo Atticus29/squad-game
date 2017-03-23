@@ -1,20 +1,35 @@
 <!--squad-form.vtl-->
-<form action="/squad" method="post">
-  <label for="name">Squad Name</label>
-  <input type="text" name="name" id="name">
-  <label for="cause"></label>
-  <input type="text" name="cause" id="cause">
-  #foreach ($hero in $heroes)
-    <div class="hero">
-      <h2>Name: $hero.getName():</h2>
-      <h3>Age: $hero.getAge()</h3>
-      <h3>Ability: $hero.getPower()</h3>
-      <h3>Attack: $hero.getAttack()</h3>
-      <h3>Defense: $hero.getDefense()</h3>
-      <input type="checkbox" name="heroes" value="$hero.getName()">Select $hero.getName()<br>
+<form action="/squads" method="post">
+  <div class="row" id="row1">
+    <div class="form-group">
+      <label for="name">Squad Name</label>
+      <input type="text" name="name" id="name" class="form-control">
+      <label for="cause">Mission</label>
+      <input type="text" name="cause" id="cause" class="form-control">
     </div>
-  #end
-  <button type="submit" class="btn btn-primary">Add Squad</button>
+    <h3>Assemble your squad:</h3>
+  </div>
+  <div class="row" id="row2">
+    #foreach ($hero in $heroes)
+    #set ( $cols = 12/$heroes.size() )
+    <div class="col-md-$cols">
+      <div class="hero form-group">
+        <!-- <h4>Name: $hero.getName():</h4> -->
+        <h4><input type="checkbox" name="heroes" value="$hero.getName()"> $hero.getName()</h4>
+        <ul>
+          <h5>Age: $hero.getAge()</h5>
+          <h5>Ability: $hero.getPower()</h5>
+          <h5>Attack: $hero.getAttack()</h5>
+          <h5>Defense: $hero.getDefense()</h5>
+        </ul>
+      </div>
+    </div>
+    #end
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <button type="submit" class="btn btn-primary">Create Squad</button>
+    </div>
+  </div>
 </form>
-  <a href="/squads/:sqaudID/heroes/new" class="btn btn-primary">Create a new hero</a>
 <!--squad-form.vtl-->

@@ -1,0 +1,31 @@
+<!--available-heroes.vtl-->
+#if ($heroes.size() > 0)
+  <form action="/squads/$squadID" method="post">
+    <div class="row" id="row2">
+      #foreach ($hero in $heroes)
+      #set ( $cols = 12/$heroes.size() )
+      <div class="col-md-$cols">
+        <div class="hero form-group">
+          <!-- <h4>Name: $hero.getName():</h4> -->
+          <h4><input type="checkbox" name="heroes" value="$hero.getName()"> $hero.getName()</h4>
+          <ul>
+            <h5>Age: $hero.getAge()</h5>
+            <h5>Ability: $hero.getPower()</h5>
+            <h5>Attack: $hero.getAttack()</h5>
+            <h5>Defense: $hero.getDefense()</h5>
+          </ul>
+        </div>
+      </div>
+      #end
+    </div>
+    <button class="btn btn-primary" type="submit">Recruit Hero</button>
+  </form>
+#else
+<div class="row">
+  <h4>No Heroes available for recruitment. in other words.... your city is fuuuuucked</h4>
+</div>
+#end
+<div class="row">
+  <a class="btn btn-primary" href="/squads/$squadID">Return to Squad</a>
+</div>
+<!--available-heroes.vtl-->
